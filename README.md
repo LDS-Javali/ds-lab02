@@ -1,5 +1,5 @@
 # Nome do projeto
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+Pretende-se desenvolver um sistema para apoio à gestão de aluguéis de automóveis que permita efetuar, cancelar e modificar pedidos através da Internet
 
 ## Integrantes
 
