@@ -66,17 +66,6 @@ Pretende-se desenvolver um sistema para apoio à gestão de aluguéis de automó
 **Eu quero** registrar as informações dos automóveis,<br/>
 **Para** que eles possam ser associados corretamente aos pedidos de aluguel e contratos.<br/>
 
-### Associar Contrato de Crédito ao Aluguel
-
-**Como** sistema,<br/>
-**Eu quero** permitir a associação de um contrato de crédito ao aluguel,<br/>
-**Para** que o financiamento do automóvel seja gerenciado por um banco agente, quando aplicável.<br/>
-
-### Determinar Propriedade do Automóvel no Contrato
-
-**Como** administrador,<br/>
-**Eu quero** definir a quem pertence o automóvel alugado (cliente, empresa ou banco),<br/>
-**Para** que a propriedade esteja clara conforme o tipo de contrato firmado.<br/>
 
 ## Instruções de utilização
 Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
