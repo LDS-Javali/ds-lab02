@@ -1,5 +1,5 @@
 # Nome do projeto
-Pretende-se desenvolver um sistema para apoio à gestão de aluguéis de automóveis que permita efetuar, cancelar e modificar pedidos através da Internet
+Pretende-se desenvolver um sistema para apoio à gestão de aluguéis de automóveis que permita efetuar, cancelar e modificar pedidos através da Internet. O sistema deverá ser desenvolvido em Java, utilizando arquitetura MVC.
 
 ## Integrantes
 
