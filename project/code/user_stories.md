@@ -65,6 +65,3 @@
 **Como** administrador,<br/>
 **Eu quero** definir a quem pertence o automóvel alugado (cliente, empresa ou banco),<br/>
 **Para** que a propriedade esteja clara conforme o tipo de contrato firmado.<br/>
-
-## Instruções de utilização
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
