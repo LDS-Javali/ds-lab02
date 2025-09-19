@@ -1,20 +1,36 @@
 package com.carconnect.api.domain;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
-    @Getter
-    public class Empregador {
-        private final UUID id;
-        private final String razaoSocial;
-        private final BigDecimal rendimentoMensal;
+@Entity
+@Table(name = "empregadores")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Empregador {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+    
+    @Column(nullable = false)
+    private String razaoSocial;
+    
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal rendimentoMensal;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
-        public Empregador(UUID id, String razaoSocial, BigDecimal rendimentoMensal){
-            this.id = id==null? UUID.randomUUID(): id;
-            this.razaoSocial = Objects.requireNonNull(razaoSocial);
-            this.rendimentoMensal = Objects.requireNonNull(rendimentoMensal);
-        }
+    public Empregador(String razaoSocial, BigDecimal rendimentoMensal){
+        this.razaoSocial = Objects.requireNonNull(razaoSocial);
+        this.rendimentoMensal = Objects.requireNonNull(rendimentoMensal);
     }
+}

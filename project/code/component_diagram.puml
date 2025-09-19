@@ -1,0 +1,113 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam component {
+    BackgroundColor #E9F0FA
+    BorderColor #406080
+    FontColor #000000
+}
+skinparam interface {
+    BackgroundColor #F0F8FF
+    BorderColor #4682B4
+    FontColor #000000
+}
+
+title Diagrama de Componentes - Sistema CarConnect
+
+actor "Cliente" as Cliente
+actor "Agente (Empresa/Banco)" as Agente
+actor "Administrador" as Admin
+
+package "Presentation Layer" as presentation {
+    component "Web Interface" as web_ui {
+        component "ClienteWebController" as cliente_web_ctrl
+        component "HomeController" as home_ctrl
+    }
+    
+    component "REST API" as rest_api {
+        component "ClienteController" as cliente_api_ctrl
+        component "PedidoController" as pedido_api_ctrl
+    }
+}
+
+package "Application Layer" as application {
+    component "ClienteService" as cliente_service
+    component "PedidoService" as pedido_service
+    component "ContratoService" as contrato_service
+    component "AvaliacaoService" as avaliacao_service
+}
+
+package "Domain Layer" as domain {
+    component "Cliente" as cliente_entity
+    component "PedidoAluguel" as pedido_entity
+    component "ContratoAluguel" as contrato_entity
+    component "AvaliacaoFinanceira" as avaliacao_entity
+    component "Automovel" as automovel_entity
+    component "Agente" as agente_entity
+    
+    interface "ClienteRepository" as cliente_repo_interface
+    interface "PedidoRepository" as pedido_repo_interface
+    interface "ContratoRepository" as contrato_repo_interface
+}
+
+package "Infrastructure Layer" as infrastructure {
+    component "Database" as database {
+        component "H2 Database" as h2_db
+    }
+    
+    component "Security" as security {
+        component "SecurityConfig" as security_config
+    }
+    
+    component "Persistence" as persistence {
+        component "ClienteRepositoryImpl" as cliente_repo_impl
+        component "PedidoRepositoryImpl" as pedido_repo_impl
+        component "ContratoRepositoryImpl" as contrato_repo_impl
+    }
+}
+
+package "External Systems" as external {
+    component "Banco Gateway" as banco_gateway
+    component "Sistema de Análise Financeira" as analise_financeira
+}
+
+Cliente --> web_ui : "Acessa interface web"
+Cliente --> rest_api : "Faz requisições REST"
+Agente --> rest_api : "Avalia pedidos via API"
+Admin --> web_ui : "Gerencia sistema"
+
+web_ui --> application : "Chama serviços"
+rest_api --> application : "Chama serviços"
+
+application --> domain : "Usa entidades e repositórios"
+
+infrastructure --> domain : "Implementa repositórios"
+
+application --> external : "Integra com sistemas externos"
+
+cliente_web_ctrl --> cliente_service
+cliente_api_ctrl --> cliente_service
+pedido_api_ctrl --> pedido_service
+
+cliente_service --> cliente_entity
+cliente_service --> cliente_repo_interface
+pedido_service --> pedido_entity
+pedido_service --> pedido_repo_interface
+contrato_service --> contrato_entity
+contrato_service --> contrato_repo_interface
+avaliacao_service --> avaliacao_entity
+
+cliente_repo_impl --> cliente_repo_interface
+pedido_repo_impl --> pedido_repo_interface
+contrato_repo_impl --> contrato_repo_interface
+
+cliente_repo_impl --> h2_db
+pedido_repo_impl --> h2_db
+contrato_repo_impl --> h2_db
+
+security_config --> web_ui : "Aplica segurança"
+security_config --> rest_api : "Aplica segurança"
+
+@enduml

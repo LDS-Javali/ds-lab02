@@ -1,9 +1,38 @@
 package com.carconnect.api.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Objects;
 
-public record Endereco(String logradouro, String numero, String complemento, String bairro, String cidade,
-                       String estado, String cep) {
+@Embeddable
+@Getter
+@Setter
+@NoArgsConstructor
+public class Endereco {
+    @Column(nullable = false)
+    private String logradouro;
+    
+    @Column(nullable = false)
+    private String numero;
+    
+    private String complemento;
+    
+    @Column(nullable = false)
+    private String bairro;
+    
+    @Column(nullable = false)
+    private String cidade;
+    
+    @Column(nullable = false)
+    private String estado;
+    
+    @Column(nullable = false)
+    private String cep;
+
     public Endereco(String logradouro, String numero, String complemento,
                     String bairro, String cidade, String estado, String cep) {
         this.logradouro = require(logradouro);

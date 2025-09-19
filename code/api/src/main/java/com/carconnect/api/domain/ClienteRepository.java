@@ -1,9 +1,10 @@
 package com.carconnect.api.domain;
 
-import java.util.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ClienteRepository {
-    Optional<Cliente> byId(UUID id);
-    Cliente save(Cliente cliente);
-    void delete(UUID id);
+import java.util.UUID;
+
+@Repository
+public interface ClienteRepository extends JpaRepository<Cliente, UUID> {
 }
