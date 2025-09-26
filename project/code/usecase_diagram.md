@@ -1,3 +1,5 @@
+<img src="img/usecase_diagram.png" alt="Diagrama de Casos de Uso"/>
+
 
 
 ``` plantuml
