@@ -52,7 +52,7 @@ public class ContratoAluguel {
     @Column
     private String observacoes;
     
-    @Columns
+    @Column
     private UUID contratoCreditoId;
 
     public ContratoAluguel(UUID pedidoId, UUID proprietarioId, LocalDate inicioVigencia, LocalDate fimVigencia, BigDecimal valorDiario) {
