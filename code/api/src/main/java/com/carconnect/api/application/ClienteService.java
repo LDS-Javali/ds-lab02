@@ -26,6 +26,10 @@ public class ClienteService {
     public Optional<Cliente> buscarPorId(UUID id) {
         return clienteRepository.findById(id);
     }
+    
+    public Optional<Cliente> buscarPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf);
+    }
 
     public Cliente salvar(Cliente cliente) {
         return clienteRepository.save(cliente);
@@ -48,12 +52,12 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public void adicionarEmpregador(UUID clienteId, Empregador empregador) {
+    public Cliente adicionarEmpregador(UUID clienteId, Empregador empregador) {
         Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
         cliente.adicionarEmpregador(empregador);
-        clienteRepository.save(cliente);
+        return clienteRepository.save(cliente);
     }
 
     public void removerEmpregador(UUID clienteId, UUID empregadorId) {
